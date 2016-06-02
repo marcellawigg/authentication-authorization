@@ -3,7 +3,6 @@ require 'test_helper'
 class UserLoginTest < ActionDispatch::IntegrationTest
   test "existing user can login" do
     login_user
-
     assert page.has_content?("Welcome, Clarence!")
     assert page.has_content?("Logout")
   end
@@ -19,7 +18,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   end
 
   test "registered user cannot login with wrong password" do
-    user = User.create(username: "Clarence", 
+    user = User.create(username: "Clarence",
                        password: "password")
 
     visit login_path
@@ -43,7 +42,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   end
 
   def login_user
-    User.create(username: "Clarence", 
+    User.create(username: "Clarence",
                        password: "password")
 
     visit login_path
